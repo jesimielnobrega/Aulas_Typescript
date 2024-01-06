@@ -39,10 +39,15 @@ class Conta {
     }
 }
 class ContaPF extends Conta {
+    Nome = "Jesimiel";
     cpf;
     constructor(cpf, titular) {
         super(titular);
         this.cpf = cpf;
+    }
+    criacpf() {
+        const num = Math.floor(Math.random() * 100000);
+        return num == 0 ? num + 1 : num;
     }
     info() {
         console.log("Tipo: Pessoa física");

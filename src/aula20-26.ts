@@ -1,4 +1,4 @@
-class Conta {
+abstract class Conta {
   protected numero: number;
   protected titular: string;
   private sdcnt: number;
@@ -37,12 +37,20 @@ class Conta {
         console.log("Saldo insuficiente");
   }
 }
-
-class ContaPF extends Conta {
+interface regra{
+  Nome:string;
+  criacpf():number;
+}
+class ContaPF extends Conta implements regra{
+  Nome="Jesimiel";
   private cpf: number;
   constructor(cpf: number, titular: string) {
     super(titular);
     this.cpf = cpf;
+  }
+  criacpf(): number {
+    const num = Math.floor(Math.random() * 100000);
+    return num == 0 ? num + 1 : num; 
   }
   info() {
     console.log("Tipo: Pessoa física");
